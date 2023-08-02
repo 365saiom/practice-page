@@ -1,0 +1,103 @@
+main > .section6{
+    position: relative;
+    width: 100%;
+    background-color: #F0E9DF;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 30px;
+    color: var(--base-brown);
+}
+
+
+main > .section6 > .article1{
+    grid-column: 1/6;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main > .section6 > .article1 > .item1 > p:first-child{
+    font-size: var(--base-content);
+    margin-bottom: 25px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main > .section6 > .article1 > .item1 > p:last-child{
+    font-size: var(--base-head);
+    margin-bottom: 35px;
+    font-weight: 800;
+    line-height: 45px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main > .section6 > .article1 > .item2 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+
+main > .section6 > .article1 > .item2 > p:first-child{
+    font-size: var(--base-content);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+    grid-column: 1/9;
+}
+
+main > .section6 > .article1 > .item2 > p:nth-child(2){
+    font-family: 'Noto Serif KR', serif;
+    font-size: var(--base-content);
+    line-height: 1.1;
+    grid-column: 1/5;
+}
+
+main > .section6 > .article1 > .item2 > div{
+    grid-column: 1/9;
+    display: flex;
+    padding-top: 20px;
+}
+
+main > .section6 > .article1 > .item2 > div > a{
+    color: var(--base-brown);
+    font-size: var(--base-content);
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 2px;
+}
+
+main > .section6 > .article1 > .item2 > div > a:hover{
+    opacity: .5;
+}
+
+
+main > .section6 > .article1 > .item2 > div > a:first-child{
+    margin-right: 5px;
+}
+
+main > .section6 > .article1 > .item2 > div > a:last-child{
+    border-bottom: 1px dashed #543939;
+}
+
+
+
+main > .section6 > .article2{
+    grid-column: 6/13;
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 30px;
+}
+
+main > .section6 > .article2 > img:first-child{
+    grid-column: 1/4;
+    position: absolute;
+    bottom: 0;
+}
+
+main > .section6 > .article2 > img:last-child{
+    grid-column: 4/8;
+}

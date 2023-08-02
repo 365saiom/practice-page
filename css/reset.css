@@ -1,0 +1,36 @@
+body{
+    margin:0;
+    padding:0;
+    background-color: #F0E9DF;
+}
+
+li{
+    list-style:none;
+}
+
+a{
+    text-decoration: none;
+    margin:0;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+main{
+    width:100vw;
+    height:100vh;
+}
+
+h2{
+    margin: 0;
+}
+
+h4{
+    margin: 0;
+}
+
+p{
+    margin:0;
+}
+
+img{
+    width:100%;
+}
