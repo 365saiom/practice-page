@@ -1,35 +1,47 @@
-// header 배경
-// console.log(window);
-window.addEventListener("scroll",()=>{
-    // console.log(scrollY);
-    if(scrollY > 660){
-        document.querySelector("header").style.backgroundColor = "rgba(84,57,57,.25)";
-        document.querySelector("header").style.backdropFilter = "blur(25px)";
-    }else if(scrollY<=660 || scrollY>=4765){
-        document.querySelector("header").style.backgroundColor = "transparent";
+// scroll에 따른 header 배경 변경
+const section1 = document.querySelector(".section1");
+const section7 = document.querySelector(".section7");
+const header = document.querySelector("header");
+
+
+let section1Height = section1.clientHeight;
+let section7Height = section7.clientHeight;
+let bodyHeight = document.body.scrollHeight;
+
+
+document.addEventListener("scroll",()=>{
+    // console.log(section1Height);
+    if(scrollY>section1Height && scrollY < (bodyHeight-section7Height-1)){
+        header.style.backgroundColor = "rgba(84,57,57,.25)";
+        header.style.backdropFilter = "blur(25px)";
+        header.style.display = "flex";
+    }else if(scrollY<=section1Height){
+        header.style.backgroundColor = "transparent";
+        header.style.backdropFilter = "none";
+        header.style.display = "flex";
+    }else if(scrollY > (bodyHeight-section7Height-1)){
+        document.querySelector("header").style.display = "none";
     }
 });
 
 // section1의 mouseover효과
 var circleSize = $(".circle").width()/2;
 $(".section1").on("mousemove", (e) => {    
+    $('.circle').css("opacity", 1);
     $('.circle').css("top", e.pageY - circleSize);
     $('.circle').css("left", e.pageX - circleSize);
     $('.circle').fadeIn();
 });
 $(".section1").on("mouseleave", (e) => {
-  $('.circle').fadeOut();
+    $('.circle').css("opacity", 1);
+    $('.circle').fadeOut();
+});
+
+$(".section1").on("click", () => {
+    $('.circle').css("opacity", 0);
 });
 
 
-// 슬라이더
-const swiper = new Swiper(".swiper", {
-    direction: "horizontal",
-    speed: 1000,
-    slidesPerView: 1.6,
-    spaceBetween: 280,
-    loop: true,
-  });
 
 
 // 배경 색상, 문구 변경
@@ -58,36 +70,44 @@ let lastFont = [
     "CRISP AND EASY"
 ]
 
-const section1 = document.querySelector(".section1"),
-      article = document.querySelector(".article1"),
-      font = document.querySelector(".item"),
-      front = font.querySelector("h1:first-child"),
-      last = font.querySelector("h1:last-child"),
-      slides = document.querySelector(".swiper-wrapper"),
-      slide = document.querySelectorAll(".swiper-slide"),
-      slideCount = slide.length;
-let index = 1;
+article = document.querySelector(".article1"),
+font = document.querySelector(".item"),
+front = font.querySelector("h1:first-child"),
+last = font.querySelector("h1:last-child"),
+slides = document.querySelector(".swiper-wrapper"),
+slide = document.querySelectorAll(".swiper-slide"),
+slideCount = slide.length;
+let index = 0;
+
 
 section1.addEventListener("click", () => {
-    //배경 변경
-    section1.style.backgroundColor = changeColor[index];
-    //글자 변경
-    front.innerText = frontFont[index];
-    last.innerText = lastFont[index];
     //슬라이드 이동
-    swiper.slideTo(index);
-    // const realIndex = swiper.realIndex;
-    // console.log(realIndex);
-    console.log(index);
-    index++;
+    swiper.slideNext();
+});
 
-    if(index==5){
-            index=0;
-        };
-    }
-    // if(index==5){
-    //     setTimeout(()=>{
-    //         index=0;
-    //     },500);
-    // }
-);
+// 슬라이드
+const swiper = new Swiper(".swiper", {
+    direction: "horizontal",
+    speed: 500,
+    slidesPerView: 1.6,
+    spaceBetween: 400,
+    loop: true,
+
+  on: {
+    slideChangeTransitionStart: function() {
+        section1.style.backgroundColor = changeColor[index];
+        // console.log(index);
+        
+        //글자 변경
+        front.innerText = frontFont[index];
+        front.classList.add("fade-in");
+        last.innerText = lastFont[index];
+        last.classList.add("fade-in");
+        index++;
+        if(index==5){
+                index=0;
+            }
+        
+    },
+},
+});

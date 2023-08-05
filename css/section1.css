@@ -1,13 +1,10 @@
 main > .section1{
-    position: relative;
     width: 100%;
     height: 100vh;
     padding: 30px 0px 30px 30px;
     box-sizing: border-box;
     background-color: #5d9060;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     z-index: 5;
 }
 
@@ -18,6 +15,7 @@ main > .section1 > .circle{
     left: 46px; */
     width: 100px;
     height: 100px;
+    background-color: transparent;
     border: 1px dashed white;
     border-radius: 50%;
     color: white;
@@ -31,12 +29,20 @@ main > .section1 > .article1{
     position: relative;
     display: grid;
     grid-template-columns: repeat(12,1fr);
+    width: 100%;
+    height: 100%;
+    column-gap: 100px;
+    top: 50px;
 }
 
 main > .section1 > .article1 > .item{
+    /* top: 15%; */
+    position: absolute;
     grid-column: 1/5;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 main > .section1 > .article1 > .item > h1{
@@ -54,16 +60,29 @@ main > .section1 > .article1 > .item > h1:last-child{
     color: #d4ccbd;
 }
 
+/* 서서히 나타나는 효과 클래스 */
+.fade-in {
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 main > .section1 > .article1 > .swiper{
-    grid-column: 6/13;
+    position: absolute;
+    grid-column: 5/13;
     display: grid;
     grid-template-columns: repeat(8,1fr);
-    position: absolute;
-    top: calc(50vh - 430px);
 }
 
 main > .section1 > .article1 > .swiper >.swiper-wrapper{
-    height: 500px;
+    /* height: 500px; */
     grid-column: 1/9;
 }
 
@@ -74,9 +93,23 @@ main > .section1 > .article1 > .swiper >.swiper-wrapper > .swiper-slide{
 
 main > .section1 > .article1 > .swiper >.swiper-wrapper > .swiper-slide > img{
     grid-column: 1/5;
+    /* height: 100%; */
 }
 
 
 main > .section1 > .article2{
+    bottom: 30px;
+    position: absolute;
     display: flex;
+}
+
+main > .section1 > .article2 > a{
+    color: white;
+    margin-right: 10px;
+    font-size: var(--base-content);
+}
+
+main > .section1 > .article2 > a:last-child{
+    text-decoration: dotted;
+    border-bottom: 1px dashed white;
 }
