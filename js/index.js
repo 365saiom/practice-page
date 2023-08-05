@@ -99,10 +99,10 @@ const swiper = new Swiper(".swiper", {
         // console.log(index);
         
         //글자 변경
-        front.innerText = frontFont[index];
         front.classList.add("fade-in");
-        last.innerText = lastFont[index];
+        front.innerText = frontFont[index];
         last.classList.add("fade-in");
+        last.innerText = lastFont[index];
         index++;
         if(index==5){
                 index=0;
