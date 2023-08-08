@@ -54,36 +54,22 @@ let changeColor = [
     "#b3956d"
 ];
 
-let frontFont = [
-    "ORIGINAL GREEN TEA",
-    "PASSIONFRUIT & PEACH TEA",
-    "PINEAPPLE & MANGO TEA",
-    "BLUEBERRY & RASPBERRY TEA",
-    "BLOOD ORANGE & HIBISCUS TEA"
-]
-
-let lastFont = [
-    "A CLEAN TAKE ON A CLASSIC",
-    "SUBTLY SWEET",
-    "PERFECTLY PLAYFUL",
-    "COOL AND REFRESHING",
-    "CRISP AND EASY"
-]
-
-article = document.querySelector(".article1"),
-font = document.querySelector(".item"),
-front = font.querySelector("h1:first-child"),
-last = font.querySelector("h1:last-child"),
+article1 = document.querySelector(".article1"),
+item1 = document.querySelector(".item1"),
+text1 = item1.querySelectorAll("h1"),
+item2 = document.querySelector(".item2"),
+text2 = item2.querySelectorAll("h1"),
 slides = document.querySelector(".swiper-wrapper"),
 slide = document.querySelectorAll(".swiper-slide"),
-slideCount = slide.length;
-let index = 0;
-
+index = 0;
 
 section1.addEventListener("click", () => {
     //슬라이드 이동
     swiper.slideNext();
+    
 });
+
+
 
 // 슬라이드
 const swiper = new Swiper(".swiper", {
@@ -92,21 +78,31 @@ const swiper = new Swiper(".swiper", {
     slidesPerView: 1.6,
     spaceBetween: 400,
     loop: true,
-
-  on: {
-    slideChangeTransitionStart: function() {
-        section1.style.backgroundColor = changeColor[index];
-        // console.log(index);
+    
+    on: {
+        slideChangeTransitionStart: function() {
+            section1.style.backgroundColor = changeColor[index];
+            // console.log(index);
+            for (let text of text1) {
+                text.classList.remove("active");
+                // console.log(text);
+                // console.log(text1);
+            }
+            index++;
+            if(index === text1.length){
+                // idx = 0;
+                index = 0;
+                text1[0].classList.add("active");
+                section1.style.backgroundColor = "changeColor[0]";
+            } else{
+                text1[index].classList.add("active");
+                section1.style.backgroundColor = "changeColor[index]";
+            }
         
         //글자 변경
-        front.classList.add("fade-in");
-        front.innerText = frontFont[index];
-        last.classList.add("fade-in");
-        last.innerText = lastFont[index];
-        index++;
-        if(index==5){
-                index=0;
-            }
+        // if(index==5){
+        //         index=0;
+        //     }
         
     },
 },
